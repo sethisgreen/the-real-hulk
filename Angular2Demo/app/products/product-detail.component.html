@@ -1,0 +1,60 @@
+﻿<div class='panel panel-primary' *ngIf='product'>
+  <div class='panel-heading'>
+    {{ pageTitle + ': ' + product.productName }}
+  </div>
+  <div class='panel-body'>
+    <div class='row'>
+      <div class='col-xs-6 col-sm-6 col-md-6'
+      [style.background]="color"
+                    (mouseenter)="color = '#ccc'"
+                    (mouseleave)="color = '#fff'">
+        <img class='center-block img-responsive' 
+                    [style.width.px]='200' 
+                    [style.margin.px]='2' 
+                    [src]='product.imageUrl' 
+                    [title]='product.productName'>
+      </div>
+      <div class='col-xs-6 col-sm-6 col-md-6'>
+        <div class='col-md-8'>
+          <label class="textfield_label" for="nametext"></label>
+          <input type="text" id="nametext"
+            [(ngModel)]="product.productName"
+            [ngClass]="{selected: edit}"
+            *ngIf="edit">
+          {{product.productName + ' - ' + product.productCode}}
+        </div>
+        <div class='col-md-8'>
+          <ai-star [rating]='product.starRating'></ai-star>
+        </div>
+        <div class='col-md-8'>
+          <hr>
+        </div>
+        <div class='col-md-6'>Price: {{product.price | currency:'USD':true:'1.2-2'}}</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <hr>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <h5>Product Description</h5>
+      </div>
+      <div class='col-md-6'>
+        <label class="textfield_label" for="descriptiontext"></label>
+        <input type="text" id="descriptiontext"
+            [(ngModel)]="product.description"
+            [ngClass]="{selected: edit}"
+            *ngIf="edit">
+        <span>{{product.description}}</span></div>
+      <div class='col-md-6'>Release date: {{product.releaseDate}}</div>
+    </div>
+  </div>
+  <div class='panel-footer'>
+    <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+      <i class='glyphicon glyphicon-chevron-left'></i> Back
+    </a>
+    <a class='btn btn-default' (click)='editProduct()' style='width:80px'>
+      <i class='glyphicon glyphicon-chevron-up'></i> {{edit ? 'Save' : 'Edit'}}
+    </a>
+  </div>
+</div>

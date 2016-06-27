@@ -1,0 +1,15 @@
+﻿.block-title {
+    font-size: 24px;
+}
+h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #808083; 
+}
+span {
+    color: #808083; 
+}
+.lite-title {
+    font-size: 12px;
+    font-style: italic;
+}
